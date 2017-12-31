@@ -22,7 +22,7 @@
             <th>Task ID</th>
             <th>Task name</th>
             <th>Deliver by</th>
-            <th>Tomatos</th>
+            <th>Tomatoes</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -44,11 +44,11 @@
                         class="btn btn-default btn-xs"
                         (click)="toggleTask(task)"
                         [ngSwitch]="task.queued">
-                    <ng-template [ngSwitchWhen]="false">
+                    <ng-template [ngSwitch]="false">
                         <i class="glyphicon glyphicon-plus-sign"></i>
                         Add
                     </ng-template>
-                    <ng-template [ngSwitchWhen="true">
+                    <ng-template [ngSwitch]="true">
                         <i class="glyphicon glyphicon-minus-sign"></i>
                         Remove
                     </ng-template>

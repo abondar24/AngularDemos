@@ -56,5 +56,14 @@
   "defaults": {
     "styleExt": "css",
     "component": {}
-  }
+  },
+  "styles": [
+    "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+  ],
+  "scripts": [
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+    "../node_modules/core-js/client/shim.min.js",
+    "../node_modules/zone.js/dist/zone.js"
+  ]
 }

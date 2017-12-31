@@ -1,16 +1,14 @@
-import {Task} from '../shared/shared'
-import {Input, HostListener, Directive,ElementRef} from '@angular/core';
 
+import {Input, HostListener, Directive,ElementRef} from '@angular/core';
+import Task from "../interfaces/task";
 
 @Directive({
     selector: '[task]'
 })
-export default class TaskTooltipDirective {
+export class TaskTooltipDirective {
     private defaultTooltipText: string;
-    @Input('task') task: Task;
-    @Input('task') taskTooltip: any;
-
-    constructor(private el: ElementRef){}
+    @Input() task: Task;
+    @Input() taskTooltip: any;
 
     @HostListener('mouseover')
     onMouseOver() {

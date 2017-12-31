@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../shared'
+import  Task  from '../interfaces/task'
 
 
 @Injectable()
