@@ -9,7 +9,7 @@ import {Component, Input, Output, ViewEncapsulation,EventEmitter } from '@angula
 })
 
 export class AppComponent {
-  title = 'app';
+
   @Input()
   seconds: number;
   intervalId: NodeJS.Timer;

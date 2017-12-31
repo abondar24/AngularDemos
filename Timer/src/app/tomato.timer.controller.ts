@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import { NgbButtonsModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: "tomato-timer",
