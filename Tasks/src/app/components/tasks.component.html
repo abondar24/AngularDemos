@@ -2,7 +2,7 @@
     <h3>
         {{ queuedTomatoes | i18nPlural: queueHeaderMapping }} for today
         <span class="small" *ngIf="queuedTomatoes > 0">
-                (Estimated time: {{ queuedTomatoes * timerMinutes | tomatoFormattedTime }})
+                (Estimated time: {{ queuedTomatoes * 20 | tomatoFormattedTime }})
             </span>
     </h3>
     <p>

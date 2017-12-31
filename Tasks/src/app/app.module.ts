@@ -20,7 +20,7 @@ import {QueuedOnlyPipe} from "./pipes/queued-only.pipe";
     TasksComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [TaskService],
   bootstrap: [TasksComponent]
