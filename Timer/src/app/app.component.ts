@@ -2,7 +2,7 @@ import {Component, Input, Output, ViewEncapsulation,EventEmitter } from '@angula
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'countdown',
   template: `<h1>Time left: {{ seconds }}</h1>`,
   styles: ['h1 {color: #900}'],
   encapsulation: ViewEncapsulation.Emulated
@@ -34,12 +34,4 @@ export class AppComponent {
   }
 }
 
-@Component({
-  selector: "tomato-timer",
-  templateUrl: './tomato-timer.html'
-})
-class TomatoTimerComponent {
-  onCountdownCompleted(): void{
-    alert('Time UP!');
-  }
-}
+
