@@ -3,13 +3,7 @@ Angular 2.+ demos
 
 ## Demos
 
-- Base - basic angular module
-- Tasks - small list of tasks
-- Timer - timer with tomato
-- TimerMin - timer with tomato for 25 minutes
-
-## Run
-````yaml
-npm install
-ng serve
-````
+- [Base](Base/README.md) - basic angular module
+- [Tasks](Tasks/README.md) - small list of tasks
+- [Timer](Timer/README.md) - timer with tomato
+- [TimerMin](TimerMin/README.md) - timer with tomato for 25 minutes
