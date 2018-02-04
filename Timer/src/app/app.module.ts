@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
-import {TomatoTimerComponent} from "./tomato.timer.controller";
+import {TomatoTimerComponent} from "./tomato.timer.component";
 
 @NgModule({
   declarations: [

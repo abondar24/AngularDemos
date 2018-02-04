@@ -1,9 +1,9 @@
+import Queueable from "./queueable";
 
-interface Task {
+interface Task extends Queueable{
     name: string;
     deadline: Date;
     tomatoRequired: number;
-  queued: boolean;
 }
 
 export default Task
