@@ -1,45 +1,52 @@
 import { Injectable } from '@angular/core';
 import  Task  from '../interfaces/task'
+import {HttpClient} from  '@angular/common/http'
 
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export default class TaskService {
     public taskStore: Task[] = [];
+    public taskFeed: Observable<Task>;
+    private taskObserver: any;
+    // put this location to angular cli
+    private dataUrl = 'app/data/raw-tasks.json';
 
-    constructor() {
-        const tasks = [
-            {
-                name: "Code  HTML table",
-                deadline: "Mar 26 2017",
-                tomatoRequired: 1
-            },
-            {
-                name: "Fix Bugs",
-                deadline: "Mar 29 2017",
-                tomatoRequired: 2
-            },
-            {
-                name: "Buy a burger",
-                deadline: "Mar 31 2017",
-                tomatoRequired: 1
-            },
-            {
-                name: "Special task ",
-                deadline: "Apr 3 2017",
-                tomatoRequired: 3
-            }
-        ];
+    constructor(private http:HttpClient) {
+      this.taskFeed = new Observable<Task>(observer =>{
+        this.taskObserver = observer;
+      });
 
-
-        this.taskStore = tasks.map(task => {
-            return {
-                name: task.name,
-                deadline: new Date(task.deadline),
-                queued: false,
-                tomatoRequired: task.tomatoRequired
-            }
-        });
+      this.fetchTasks();
     }
+
+    private fetchTasks():void{
+      this.http.get(this.dataUrl)
+        .map(stream=>stream.map(
+          res=>{
+
+            return {
+              name: res.name,
+              deadline: new Date(res.deadline),
+              queued: false,
+              tomatoRequired: res.tomatoRequired
+            }
+          }))
+        .subscribe(
+          tasks=>{
+            this.taskStore = tasks;
+            tasks.forEach(task=>this.taskObserver.next(task))
+          },
+          error => console.log(error)
+        );
+    }
+
+   addTask(task:Task):void{
+      this.taskObserver.next(task);
+
+   }
+
 }
 
 

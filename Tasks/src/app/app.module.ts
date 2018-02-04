@@ -9,12 +9,14 @@ import {QueuedOnlyPipe} from "./pipes/queued-only.pipe";
 import AppComponent from "./app.component";
 import {SettingsService} from "./services/settings.service";
 import {TimerComponent} from "./timer/timer.component";
+import {HttpClientModule} from "@angular/common/http";
+import 'rxjs/Rx';
+
 
 @NgModule({
   declarations: [
     TaskIconsComponent,
     TaskTooltipDirective,
-
     FormattedTimePipe,
     QueuedOnlyPipe,
     AppComponent,
@@ -23,6 +25,7 @@ import {TimerComponent} from "./timer/timer.component";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
   ],
   providers: [TaskService,SettingsService],
   bootstrap: [AppComponent]

@@ -24,6 +24,9 @@ export class TasksComponent {
     this.tasks = this.tasksService.taskStore;
     this.today = new Date();
     this.updateQueuedTomatoes();
+    this.tasksService.taskFeed.subscribe(newTask=>{
+      this.tasks.push(newTask);
+    });
   }
 
 
