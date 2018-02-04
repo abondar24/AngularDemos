@@ -6,11 +6,11 @@ import {Component} from "@angular/core";
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <strong class="navbar-brand">My Pomodoro App</strong>
+          <strong class="navbar-brand">Tomatto Tasks App</strong>
         </div>
       </div>
     </nav>
-    <!--<pomodoro-timer-widget></pomodoro-timer-widget>-->
+    <tomato-timer></tomato-timer>
     <tomato-tasks></tomato-tasks>
     `
 })

@@ -7,6 +7,8 @@ import TaskService from "./services/task.service";
 import {FormattedTimePipe} from "./pipes/formatted-time.pipe";
 import {QueuedOnlyPipe} from "./pipes/queued-only.pipe";
 import AppComponent from "./app.component";
+import {SettingsService} from "./services/settings.service";
+import {TimerComponent} from "./timer/timer.component";
 
 @NgModule({
   declarations: [
@@ -16,12 +18,13 @@ import AppComponent from "./app.component";
     FormattedTimePipe,
     QueuedOnlyPipe,
     AppComponent,
-    TasksComponent
+    TasksComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
   ],
-  providers: [TaskService],
+  providers: [TaskService,SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
