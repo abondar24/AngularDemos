@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var task_icons_component_1 = require("./task-icons.component");
-var task_tooltip_directive_1 = require("../directives/task-tooltip.directive");
+var task_tooltip_directive_1 = require("./task-tooltip.directive");
 var shared_1 = require("../shared/shared");
 var TasksComponent = (function () {
     function TasksComponent(tasksService, settingsService) {

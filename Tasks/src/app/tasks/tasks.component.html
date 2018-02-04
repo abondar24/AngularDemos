@@ -44,11 +44,11 @@
                         class="btn btn-default btn-xs"
                         (click)="toggleTask(task)"
                         [ngSwitch]="task.queued">
-                    <ng-template [ngSwitch]="false">
+                    <ng-template [ngSwitchCase]="false">
                         <i class="glyphicon glyphicon-plus-sign"></i>
                         Add
                     </ng-template>
-                    <ng-template [ngSwitch]="true">
+                    <ng-template [ngSwitchCase]="true">
                         <i class="glyphicon glyphicon-minus-sign"></i>
                         Remove
                     </ng-template>
