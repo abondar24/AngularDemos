@@ -3,7 +3,6 @@ import  Task  from '../interfaces/task'
 import {HttpClient} from  '@angular/common/http'
 
 import {Observable} from "rxjs/Observable";
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export default class TaskService {
@@ -22,17 +21,7 @@ export default class TaskService {
     }
 
     private fetchTasks():void{
-      this.http.get(this.dataUrl)
-        .map(stream=>stream.map(
-          res=>{
-
-            return {
-              name: res.name,
-              deadline: new Date(res.deadline),
-              queued: false,
-              tomatoRequired: res.tomatoRequired
-            }
-          }))
+      this.http.get<Task[]>(this.dataUrl)
         .subscribe(
           tasks=>{
             this.taskStore = tasks;
