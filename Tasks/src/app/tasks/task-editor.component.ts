@@ -4,7 +4,8 @@ import {Component} from "@angular/core";
   selector: 'tomato-tasks-editor',
   templateUrl:'./tasks-editor.component.html'
 })
-export  class TaskEditorComponent{
+
+export  class TaskEditorComponent  {
   constructor(){}
 
 }

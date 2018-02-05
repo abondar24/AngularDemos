@@ -12,14 +12,26 @@ import {HttpClientModule} from "@angular/common/http";
 import 'rxjs/Rx';
 import {RouterModule, Routes} from '@angular/router';
 import {TaskEditorComponent} from "./tasks/task-editor.component";
+
+import {TaskTimerComponent} from "./timer/task.timer.component";
 import {TimerComponent} from "./timer/timer.component";
+import {Guard} from "./tasks/guard";
 
 
 
 const routes: Routes =[
   {path:'', component:TasksComponent},
-  {path:'tasks/editor',component:TaskEditorComponent},
-  {path:'timer/:id', component:TimerComponent}
+  {path:'tasks/editor',component:TaskEditorComponent,canActivate:[Guard]},
+  {path:'timer', component:TimerComponent,children:[
+      {
+        path: '',
+        component:TaskTimerComponent
+      },
+      {
+        path: ':id',
+        component: TaskTimerComponent
+      },
+    ]}
 ];
 
 @NgModule({
@@ -30,15 +42,16 @@ const routes: Routes =[
     QueuedOnlyPipe,
     AppComponent,
     TasksComponent,
+    TaskTimerComponent,
     TimerComponent,
-    TaskEditorComponent
+    TaskEditorComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [TaskService,SettingsService],
+  providers: [TaskService,SettingsService,Guard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
