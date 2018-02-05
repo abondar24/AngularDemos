@@ -5,7 +5,7 @@ import {HttpClient} from  '@angular/common/http'
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export default class TaskService {
+export class TaskService {
     public taskStore: Task[] = [];
     public taskFeed: Observable<Task>;
     private taskObserver: any;

@@ -1,5 +1,8 @@
 import {SettingsService} from "../services/settings.service";
+import {TaskService} from "../services/task.service";
 import {Component} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'tomato-timer',
@@ -11,14 +14,26 @@ export class TimerComponent{
   isPaused: boolean;
   buttonLabel: string;
   buttonLabelsMap: any;
+  taskName:string;
 
-  constructor (private settingsService:SettingsService){
+  constructor (private settingsService:SettingsService,
+               private activatedRoute: ActivatedRoute,
+               private taskService: TaskService){
     this.buttonLabelsMap = settingsService.labelsMap.timer;
   }
 
   ngOnInit():void{
     this.resetTomato();
     setInterval(() => this.tick(), 1000);
+
+    let taskId=0;
+    this.activatedRoute.params.subscribe(params=>{
+      taskId = +params['id']
+    });
+
+    if (!isNaN(taskId)){
+      this.taskName = this.taskService.taskStore[taskId].name;
+    }
   }
 
   resetTomato(): void {

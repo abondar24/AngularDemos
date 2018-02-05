@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import Task from "../interfaces/task";
-import TaskService from "../services/task.service";
-
+import {TaskService} from "../services/task.service";
+import {Router} from '@angular/router';
+import {SettingsService} from "../services/settings.service";
 
 @Component({
   selector: 'tomato-tasks',
@@ -19,8 +20,9 @@ export class TasksComponent {
   };
 
 
-  constructor(private tasksService: TaskService,) {
-
+  constructor(private tasksService: TaskService,
+              private settingsService: SettingsService,
+              private router: Router) {
     this.tasks = this.tasksService.taskStore;
     this.today = new Date();
     this.updateQueuedTomatoes();
@@ -43,4 +45,7 @@ export class TasksComponent {
       }, 0)
   }
 
+  workOn(index: number): void{
+    this.router.navigate(['/timer',index])
+  }
 }

@@ -57,6 +57,12 @@
                         Add
                     </ng-template>
                 </button>
+              <button type="button"
+                      class="btn btn-default btn-xs"
+                      *ngIf="task.queued"
+                      (click)="workOn(i)">
+                <i class="glyphicon glyphicon-expand"></i> Start
+              </button>
             </td>
         </tr>
         </tbody>
