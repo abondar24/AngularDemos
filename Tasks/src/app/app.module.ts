@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {TasksComponent} from './tasks/tasks.component'
 import {TaskTooltipDirective} from "./tasks/task-tooltip.directive";
@@ -21,7 +21,8 @@ import {Guard} from "./tasks/guard";
 
 const routes: Routes =[
   {path:'', component:TasksComponent},
-  {path:'tasks/editor',component:TaskEditorComponent,canActivate:[Guard]},
+  {path:'tasks/editor',component:TaskEditorComponent,canActivate:[Guard],
+    canDeactivate:[Guard]},
   {path:'timer', component:TimerComponent,children:[
       {
         path: '',
@@ -44,7 +45,7 @@ const routes: Routes =[
     TasksComponent,
     TaskTimerComponent,
     TimerComponent,
-    TaskEditorComponent,
+    TaskEditorComponent
   ],
   imports: [
     BrowserModule,
