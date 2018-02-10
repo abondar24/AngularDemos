@@ -16,11 +16,13 @@ import {TaskEditorComponent} from "./tasks/task-editor.component";
 import {TaskTimerComponent} from "./timer/task.timer.component";
 import {TimerComponent} from "./timer/timer.component";
 import {Guard} from "./tasks/guard";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
 const routes: Routes =[
-  {path:'', component:TasksComponent},
+  {path:'', redirectTo:'tasks',pathMatch:'full'},
+  {path:'tasks', component:TasksComponent},
   {path:'tasks/editor',component:TaskEditorComponent,canActivate:[Guard],
     canDeactivate:[Guard]},
   {path:'timer', component:TimerComponent,children:[
@@ -45,11 +47,13 @@ const routes: Routes =[
     TasksComponent,
     TaskTimerComponent,
     TimerComponent,
-    TaskEditorComponent
+    TaskEditorComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [TaskService,SettingsService,Guard],

@@ -20,7 +20,7 @@ export class SettingsService {
 
     this.pluralsMap = {
       'tasks': {
-        '=0': 'No tomatos',
+        '=0': 'No tomatoes',
         '=1': 'One tomato',
         'other': '# tomato'
       }

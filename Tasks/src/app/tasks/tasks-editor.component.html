@@ -1,14 +1,18 @@
-<form class="container">
+<form class="container" (ngSubmit)="saveTask(editForm.value)" #editForm="ngForm">
   <h3>Task Editor:</h3>
   <div class="form-group">
     <input type="text"
            class="form-control"
            placeholder="Task name"
+           name="name"
+           ngModel
            required>
   </div>
   <div class="form-group">
     <input type="Date"
            class="form-control"
+           name="deadline"
+           ngModel
            required>
   </div>
   <div class="form-group">
@@ -17,14 +21,19 @@
            placeholder="Tomatoes required"
            min="1"
            max="4"
+           name="tomatoRequired"
+           ngModel
            required>
   </div>
   <div class="form-group">
-    <input type="checkbox" name="queued">
-    <label for="queued"> this task by default?</label>
+    <input type="checkbox"
+           name="queued"
+           ngModel
+         >
+    <label for="queued">Mark this done task by default?</label>
   </div>
   <p>
     <input type="submit" class="btn btn-success" value="Save">
-    <a routerLink="" class="btn btn-danger">Cancel</a>
+    <a routerLink="/tasks" class="btn btn-danger">Cancel</a>
   </p>
 </form>

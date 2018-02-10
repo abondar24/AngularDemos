@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Task from "../interfaces/task";
 import {TaskService} from "../services/task.service";
 import {Router} from '@angular/router';
@@ -9,28 +9,30 @@ import {SettingsService} from "../services/settings.service";
   styleUrls: ['./tasks.component.css'],
   templateUrl: './tasks.component.html'
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit{
   today: Date;
-  tasks: Task[] = [];
+  tasks: Task[]=[];
   queuedTomatoes: number;
-  queueHeaderMapping: any = {
-    '=0': 'No tomatoes',
-    '=1': 'One tomato',
-    'other': '# tomatoes'
-  };
+  queueHeaderMapping: any;
 
 
   constructor(private tasksService: TaskService,
               private settingsService: SettingsService,
               private router: Router) {
-    this.tasks = this.tasksService.taskStore;
+    this.queueHeaderMapping = settingsService.pluralsMap.tasks;
     this.today = new Date();
-    this.updateQueuedTomatoes();
-    this.tasksService.taskFeed.subscribe(newTask=>{
-      this.tasks.push(newTask);
-    });
   }
 
+  ngOnInit(): void {
+   this.tasksService.taskFeed
+     .subscribe(newTasks => {
+       this.tasks=newTasks;
+       this.updateQueuedTomatoes();
+    },error=>{
+     console.log(error);
+   });
+   console.log(this.tasks)
+  }
 
   toggleTask(task: Task): void {
     task.queued = !task.queued;

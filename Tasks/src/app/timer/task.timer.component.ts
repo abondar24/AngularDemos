@@ -1,6 +1,6 @@
 import {SettingsService} from "../services/settings.service";
 import {TaskService} from "../services/task.service";
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
   selector: 'tomato-task-timer',
   templateUrl: './task-timer.component.html'
 })
-export class TaskTimerComponent{
+export class TaskTimerComponent implements OnInit{
   minutes: number;
   seconds: number;
   isPaused: boolean;
