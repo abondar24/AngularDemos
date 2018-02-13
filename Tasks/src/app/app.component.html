@@ -7,9 +7,21 @@
       <li><a routerLink="" routerLinkActive="active">Tasks</a></li>
       <li><a routerLink="/timer" routerLinkActive="active">Timer</a></li>
       <li><a routerLink="/tasks/editor" routerLinkActive="active">Publish task</a></li>
+      <li *ngIf="userIsLoggedIn">
+        <a routerLink="/tasks/editor">
+          Publish Task
+        </a>
+      </li>
+      <li *ngIf="!userIsLoggedIn">
+        <a routerLink="/auth">Login</a>
+      </li>
+      <li *ngIf="userIsLoggedIn">
+        <a href="#" (click)="logout($event)">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
+
 <!--added components without routing-->
 <!--<tomato-timer></tomato-timer>-->
 <!--<tomato-tasks></tomato-tasks>-->

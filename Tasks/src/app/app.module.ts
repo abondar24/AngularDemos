@@ -15,16 +15,17 @@ import {TaskEditorComponent} from "./tasks/task-editor.component";
 
 import {TaskTimerComponent} from "./timer/task.timer.component";
 import {TimerComponent} from "./timer/timer.component";
-import {Guard} from "./tasks/guard";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LoginComponent} from "./login/login.component";
+import {AuthService} from "./services/authservice";
 
 
 
 const routes: Routes =[
   {path:'', redirectTo:'tasks',pathMatch:'full'},
   {path:'tasks', component:TasksComponent},
-  {path:'tasks/editor',component:TaskEditorComponent,canActivate:[Guard],
-    canDeactivate:[Guard]},
+  {path:'tasks/editor',component:TaskEditorComponent,canActivate:[AuthService],
+    canDeactivate:[AuthService]},
   {path:'timer', component:TimerComponent,children:[
       {
         path: '',
@@ -34,7 +35,11 @@ const routes: Routes =[
         path: ':id',
         component: TaskTimerComponent
       },
-    ]}
+    ]},
+  {
+    path: 'auth',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({
@@ -48,6 +53,7 @@ const routes: Routes =[
     TaskTimerComponent,
     TimerComponent,
     TaskEditorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ const routes: Routes =[
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [TaskService,SettingsService,Guard],
+  providers: [TaskService,SettingsService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

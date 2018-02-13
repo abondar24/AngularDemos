@@ -31,7 +31,6 @@ export class TasksComponent implements OnInit{
     },error=>{
      console.log(error);
    });
-   console.log(this.tasks)
   }
 
   toggleTask(task: Task): void {
