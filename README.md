@@ -1,5 +1,5 @@
 # AngularDemos
-Angular 2.+ demos
+Angular 5 demos
 
 ## Demos
 
@@ -7,3 +7,4 @@ Angular 2.+ demos
 - [Tasks](Tasks/README.md) - small list of tasks with timer
 - [Timer](Timer/README.md) - timer with tomato
 - [TimerMin](TimerMin/README.md) - timer with tomato for 25 minutes
+- [AngularReddit](AngularReddit/README.md) - small clone of Reddit 
