@@ -9,4 +9,5 @@ Angular 5 demos
 - [TimerMin](TimerMin/README.md) - timer with tomato for 25 minutes
 - [AngularReddit](AngularReddit/README.md) - small clone of Reddit 
 - [ProductList](ProductList/README.md) - another product list app
-- [YouTubeSearch](YouTubeSearch/README.md) - youtube video search
+- [YouTubeSearch](YouTubeSearch/README.md) - YouTube video search
+- [RxChat](RxChat/README.md) - RxJS based chat client
