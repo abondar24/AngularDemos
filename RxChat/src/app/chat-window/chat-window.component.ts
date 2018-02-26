@@ -24,16 +24,16 @@ export class ChatWindowComponent implements OnInit {
               public userService: UserService,
               public el: ElementRef) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.messages = this.threadService.currentThreadMessages;
 
     this.draftMessage = new Message();
 
-    this.threadService.currentThread.subscribe((thread: Thread)=>{
+    this.threadService.currentThread.subscribe(thread=>{
       this.currentThread = thread;
     });
 
-    this.userService.currentUser.subscribe((user: User)=>{
+    this.userService.currentUser.subscribe(user=>{
       this.currentUser = user;
     });
 
@@ -46,23 +46,26 @@ export class ChatWindowComponent implements OnInit {
     );
   }
 
-  sendMessage() {
+  sendMessage():void {
     const msg: Message = this.draftMessage;
 
     msg.author = this.currentUser;
     msg.thread = this.currentThread;
     msg.isRead = true;
+    msg.sentAt = new Date();
 
-    this.messageService.addMessage(msg);
-    this.draftMessage = new Message();
+    if (msg.text && msg.text !== null) {
+      this.messageService.addMessage(msg);
+      this.draftMessage = new Message();
+    }
   }
 
-  onEnter(event: any){
+  onEnter(event: any):void{
     this.sendMessage();
     event.preventDefault();
   }
 
-  scrollToBottom(){
+  scrollToBottom():void{
     const scrollPane = this.el.nativeElement.querySelector('.msg-container-base');
     scrollPane.scrollTop = scrollPane.scrollHeight;
   }

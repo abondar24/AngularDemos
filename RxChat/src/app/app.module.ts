@@ -31,9 +31,9 @@ import {FromNowPipe} from "./pipes/from-now.pipe";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [UserService,MessageService,ThreadService],
+  providers: [MessageService,ThreadService,UserService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

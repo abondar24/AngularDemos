@@ -21,6 +21,11 @@ describe('MessageService',()=>{
 
     const messageService: MessageService = new MessageService();
 
+    messageService.newMessages
+      .subscribe( (message: Message) => {
+        console.log('=> newMessages: ' + message.text);
+      });
+
     messageService.messages.subscribe((messages: Message[])=>{
       console.log('messages len: '+messages.length)
     });

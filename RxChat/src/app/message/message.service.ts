@@ -5,9 +5,8 @@ import {Thread} from "../thread/thread.model";
 import {User} from "../user/user.model";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/publishReplay';
-import 'rxjs/add/operator/map';
+import "rxjs/add/operator/scan";
 
 
 const initialMessages: Message[] = [];
@@ -39,17 +38,17 @@ export class MessageService{
 
     this.create.map(
       function (message: Message): IMessagesOperation {
-        return (messages: Message[])=>{
+        return messages=>{
           return messages.concat(message);
-        }
+        };
       })
       .subscribe(this.updates);
 
     this.newMessages.subscribe(this.create);
 
-    this.markThreadAsRead.map((thread: Thread)=>{
-      return (messages: Message[])=>{
-        return messages.map( (message: Message)=>{
+    this.markThreadAsRead.map(thread=>{
+      return messages=>{
+        return messages.map( message=>{
           if (message.thread.id === thread.id){
             message.isRead = true;
           }
@@ -60,14 +59,15 @@ export class MessageService{
   }
 
 
-  addMessage(newMessage: Message){
+  addMessage(newMessage: Message):void{
    this.newMessages.next(newMessage);
   }
 
   messagesForThreadUser(thread: Thread, user: User): Observable<Message>{
-    return this.newMessages.filter((message: Message)=>{
+    return this.newMessages.filter(message=>{
         return (message.thread.id === thread.id) && (message.author.id !== user.id);
       });
   }
 
 }
+

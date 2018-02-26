@@ -14,15 +14,15 @@ export class ChatThreadComponent implements OnInit {
 
   constructor(public threadService:ThreadService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.threadService.currentThread
-      .subscribe((currentThread: Thread)=>{
+      .subscribe(currentThread=>{
         this.selected = currentThread && this.thread &&
           (currentThread.id===this.thread.id);
       });
   }
 
-  clicked(event :any){
+  clicked(event :any):void{
     this.threadService.setCurrentThread(this.thread);
     event.preventDefault();
   }

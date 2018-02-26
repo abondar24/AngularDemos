@@ -16,11 +16,10 @@ export class ChatMessageComponent implements OnInit {
 
   constructor(public userService: UserService) { }
 
-  ngOnInit() {
-    this.userService.currentUser.subscribe(
-      (user: User)=>{
+  ngOnInit():void {
+    this.userService.currentUser.subscribe(user=>{
         this.currentUser = user;
-        if (this.message.author && user){
+        if (this.message.author || user){
           this.incoming = this.message.author.id !== user.id;
         }
       });

@@ -1,11 +1,39 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {ChatPageComponent} from "./chat-page/chat-page.component";
+import {ChatThreadComponent} from "./chat-thread/chat-thread.component";
+import {ChatNavBarComponent} from "./chat-nav-bar/chat-nav-bar.component";
+import {ChatWindowComponent} from "./chat-window/chat-window.component";
+import {ChatThreadsComponent} from "./chat-threads/chat-threads.component";
+import {ChatMessageComponent} from "./chat-message/chat-message.component";
+import {FormsModule} from "@angular/forms";
+import {MessageService} from "./message/message.service";
+import {ThreadService} from "./thread/thread.service";
+import {BrowserModule} from "@angular/platform-browser";
+import {UserService} from "./user/user.service";
+import {HttpClientModule} from "@angular/common/http";
+import {FromNowPipe} from "./pipes/from-now.pipe";
+
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        ChatPageComponent,
+        ChatNavBarComponent,
+        ChatThreadComponent,
+        ChatWindowComponent,
+        ChatThreadsComponent,
+        ChatMessageComponent,
+        FromNowPipe
       ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+      ],
+      providers: [UserService,MessageService,ThreadService],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

@@ -40,7 +40,7 @@ describe('MessageService',()=>{
 
 
     threadsService.threads
-      .subscribe((threadId: {[key: string]: Thread})=>{
+      .subscribe(threadId=>{
         const threads: Thread[] = _.values(threadId);
         const threadNames: string = _.map(threads,(t: Thread)=>t.name).join(', ');
         console.log(`=> threads (${threads.length}): ${threadNames}`)

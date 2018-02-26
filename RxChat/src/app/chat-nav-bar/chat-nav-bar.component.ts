@@ -4,6 +4,8 @@ import {ThreadService} from "../thread/thread.service";
 import {Message} from "../message/message.model";
 import {Thread} from "../thread/thread.model";
 import * as _ from 'lodash';
+
+
 @Component({
   selector: 'chat-nav-bar',
   templateUrl: './chat-nav-bar.component.html',
@@ -18,7 +20,7 @@ export class ChatNavBarComponent implements OnInit {
 
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.messageService.messages
       .combineLatest(
         this.threadService.currentThread,
@@ -30,8 +32,11 @@ export class ChatNavBarComponent implements OnInit {
           if (msg && !msg.isRead && !messagesIsInCurrentThread){
             sum +=1;
           }
+          console.log(sum)
           return sum;
-        },0);
+        });
       });
+
   }
+
 }

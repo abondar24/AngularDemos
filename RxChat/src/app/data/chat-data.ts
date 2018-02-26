@@ -8,7 +8,7 @@ import { UserService } from '../user/user.service';
 import * as moment from 'moment';
 
 // the person using the app us Juliet
-const me: User      = new User('Juliet', '../assets/images/avatars/female-avatar-1.png');
+const me: User      = new User('Alex', '../assets/images/avatars/male-avatar-1.png');
 const ladycap: User = new User('Lady Capulet', '../assets/images/avatars/female-avatar-2.png');
 const echo: User    = new User('Echo Bot', '../assets/images/avatars/male-avatar-1.png');
 const rev: User     = new User('Reverse Bot', '../assets/images/avatars/female-avatar-4.png');
@@ -58,11 +58,9 @@ export class ChatExampleData {
               userService: UserService): void {
 
 
-    // set "Juliet" as the current user
-    userService.setCurrentUser(rev);
+    userService.setCurrentUser(me);
 
-    // create the initial messages
-    initialMessages.map( (message: Message) => messageService.addMessage(message) );
+    initialMessages.forEach( (message: Message) => messageService.addMessage(message) );
 
     threadService.setCurrentThread(tEcho);
 

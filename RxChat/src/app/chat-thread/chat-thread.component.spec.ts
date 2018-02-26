@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatThreadComponent } from './chat-thread.component';
+import {MessageService} from "../message/message.service";
+import {ThreadService} from "../thread/thread.service";
+import {UserService} from "../user/user.service";
 
 describe('ChatThreadComponent', () => {
   let component: ChatThreadComponent;
@@ -8,7 +11,8 @@ describe('ChatThreadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatThreadComponent ]
+      declarations: [ ChatThreadComponent ],
+      providers: [UserService,MessageService,ThreadService],
     })
     .compileComponents();
   }));

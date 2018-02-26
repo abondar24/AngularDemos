@@ -18,9 +18,9 @@ export class ThreadService {
 
   constructor(public messageService: MessageService){
     this.threads = messageService.messages
-      .map((messages: Message[])=>{
+      .map(messages=>{
         const threads: {[key: string]: Thread}={};
-        messages.map((message: Message)=>{
+        messages.map(message=>{
           threads[message.thread.id] = threads[message.thread.id] || message.thread;
 
           const messagesThread: Thread = threads[message.thread.id];
@@ -32,8 +32,9 @@ export class ThreadService {
       });
 
     this.orderedThreads = this.threads
-      .map((threadGroups: {[key: string]: Thread})=>{
+      .map(threadGroups=>{
         const threads: Thread[] = _.values(threadGroups);
+        console.log(threadGroups);
         return _.sortBy(threads,(t: Thread)=> t.lastMessage.sentAt).reverse();
       });
 
@@ -42,9 +43,9 @@ export class ThreadService {
         (currentThread: Thread,messages: Message[])=>{
         if (currentThread && messages.length >0){
           return _.chain(messages)
-            .filter((message: Message) =>
+            .filter(message =>
               (message.thread.id === currentThread.id))
-            .map((message: Message) =>{
+            .map(message =>{
               message.isRead = true;
               return message;})
             .value();
@@ -56,9 +57,10 @@ export class ThreadService {
     this.currentThread.subscribe(this.messageService.markThreadAsRead);
 
 
+
   }
 
-  setCurrentThread(newThread: Thread){
+  setCurrentThread(newThread: Thread):void{
     this.currentThread.next(newThread);
   }
 }
