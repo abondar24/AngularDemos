@@ -11,7 +11,7 @@ export class ChatThreadsComponent{
   threads: Observable<any>;
 
 
-  constructor(public  threadService: ThreadService) {
+  constructor(private  threadService: ThreadService) {
     this.threads = threadService.orderedThreads;
   }
 

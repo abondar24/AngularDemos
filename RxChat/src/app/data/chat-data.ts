@@ -8,11 +8,11 @@ import { UserService } from '../user/user.service';
 import * as moment from 'moment';
 
 // the person using the app us Juliet
-const me: User      = new User('Alex', '../assets/images/avatars/male-avatar-1.png');
-const ladycap: User = new User('Lady Capulet', '../assets/images/avatars/female-avatar-2.png');
-const echo: User    = new User('Echo Bot', '../assets/images/avatars/male-avatar-1.png');
-const rev: User     = new User('Reverse Bot', '../assets/images/avatars/female-avatar-4.png');
-const wait: User    = new User('Waiting Bot', '../assets/images/avatars/male-avatar-2.png');
+const me: User      = new User('Juliet', 'assets/images/avatars/female-avatar-1.png');
+const ladycap: User = new User('Lady Capulet', 'assets/images/avatars/female-avatar-2.png');
+const echo: User    = new User('Echo Bot', 'assets/images/avatars/male-avatar-1.png');
+const rev: User     = new User('Reverse Bot', 'assets/images/avatars/female-avatar-4.png');
+const wait: User    = new User('Waiting Bot', 'assets/images/avatars/male-avatar-2.png');
 
 const tLadycap: Thread = new Thread('tLadycap', ladycap.name, ladycap.avatarSrc);
 const tEcho: Thread    = new Thread('tEcho', echo.name, echo.avatarSrc);
@@ -53,18 +53,22 @@ const initialMessages: Array<Message> = [
 ];
 
 export class ChatExampleData {
-  static init(messageService: MessageService,
-              threadService: ThreadService,
+  static init(messagesService: MessageService,
+              threadsService: ThreadService,
               userService: UserService): void {
 
+    // TODO make `messages` hot
+    messagesService.messages.subscribe(() => ({}));
 
+    // set "Juliet" as the current user
     userService.setCurrentUser(me);
 
-    initialMessages.forEach( (message: Message) => messageService.addMessage(message) );
+    // create the initial messages
+    initialMessages.map( (message: Message) => messagesService.addMessage(message) );
 
-    threadService.setCurrentThread(tEcho);
+    threadsService.setCurrentThread(tEcho);
 
-    this.setupBots(messageService);
+    this.setupBots(messagesService);
   }
 
   static setupBots(messagesService: MessageService): void {

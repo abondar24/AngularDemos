@@ -19,10 +19,10 @@ export class ChatWindowComponent implements OnInit {
    draftMessage: Message;
    currentUser: User;
 
-  constructor(public messageService: MessageService,
-              public threadService: ThreadService,
-              public userService: UserService,
-              public el: ElementRef) { }
+  constructor(private messageService: MessageService,
+              private threadService: ThreadService,
+              private userService: UserService,
+              private el: ElementRef) { }
 
   ngOnInit():void {
     this.messages = this.threadService.currentThreadMessages;

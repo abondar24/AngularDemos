@@ -34,7 +34,6 @@ export class ThreadService {
     this.orderedThreads = this.threads
       .map(threadGroups=>{
         const threads: Thread[] = _.values(threadGroups);
-        console.log(threadGroups);
         return _.sortBy(threads,(t: Thread)=> t.lastMessage.sentAt).reverse();
       });
 

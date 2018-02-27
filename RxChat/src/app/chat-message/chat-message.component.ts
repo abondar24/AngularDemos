@@ -14,7 +14,7 @@ export class ChatMessageComponent implements OnInit {
   currentUser: User;
   incoming: boolean;
 
-  constructor(public userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit():void {
     this.userService.currentUser.subscribe(user=>{

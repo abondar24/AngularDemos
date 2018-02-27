@@ -15,8 +15,8 @@ export class ChatNavBarComponent implements OnInit {
 
   unreadMessagesCount: number;
 
-  constructor(public messageService: MessageService,
-              public threadService: ThreadService) { }
+  constructor(private messageService: MessageService,
+              private threadService: ThreadService) { }
 
 
 
@@ -32,9 +32,8 @@ export class ChatNavBarComponent implements OnInit {
           if (msg && !msg.isRead && !messagesIsInCurrentThread){
             sum +=1;
           }
-          console.log(sum)
           return sum;
-        });
+        },0);
       });
 
   }

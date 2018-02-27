@@ -12,7 +12,7 @@ export class ChatThreadComponent implements OnInit {
   @Input() thread: Thread;
   selected = false;
 
-  constructor(public threadService:ThreadService) { }
+  constructor(private threadService:ThreadService) { }
 
   ngOnInit():void {
     this.threadService.currentThread
