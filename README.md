@@ -11,3 +11,4 @@ Angular 5 demos
 - [ProductList](ProductList/README.md) - another product list app
 - [YouTubeSearch](YouTubeSearch/README.md) - YouTube video search
 - [RxChat](RxChat/README.md) - RxJS based chat client
+- [ReduxChat](ReduxChat/README.md) - Redux based chat client

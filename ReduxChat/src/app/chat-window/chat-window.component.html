@@ -14,7 +14,7 @@
 
         <div class="panel-body msg-container-base">
           <chat-message
-            *ngFor="let message of messages | async"
+            *ngFor="let message of currentThread.messages"
             [message]="message">
           </chat-message>
         </div>
