@@ -12,3 +12,4 @@ Angular 5 demos
 - [YouTubeSearch](YouTubeSearch/README.md) - YouTube video search
 - [RxChat](RxChat/README.md) - RxJS based chat client
 - [ReduxChat](ReduxChat/README.md) - Redux based chat client
+- [MusicSearch](MusicSearch/README.md) - Music Search app based on Spotify API
