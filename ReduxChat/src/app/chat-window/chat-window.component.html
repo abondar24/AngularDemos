@@ -10,6 +10,7 @@
               Chat - {{currentThread.name}}
             </h3>
           </div>
+
         </div>
 
         <div class="panel-body msg-container-base">
@@ -27,10 +28,11 @@
                    (keydown.enter)="onEnter($event)"
                    [(ngModel)]="draftMessage.text" />
             <span class="input-group-btn">
-            <button class="btn-chat"
-                    (click)="onEnter($event)"
-            >Send</button>
-          </span>
+              <button class="btn-chat"
+                      (click)="onEnter($event)">
+                Send
+              </button>
+            </span>
           </div>
         </div>
 

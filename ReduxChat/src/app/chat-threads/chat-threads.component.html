@@ -1,9 +1,9 @@
 <div class="row">
   <div class="conversation-wrap">
     <chat-thread
-    *ngFor="let thread of threads "
-    [thread]="thread"
-    [selected]="thread.id === currentThreadId"
+    *ngFor="let th of threads "
+    [thread]="th"
+    [selected]="th.id === currentThreadId"
     (onThreadSelected)="handleThreadClicked($event)">
     </chat-thread>
   </div>

@@ -7,7 +7,7 @@ import {Thread} from "../thread/thread.model";
   templateUrl: './chat-thread.component.html',
   styleUrls: ['./chat-thread.component.css']
 })
-export class ChatThreadComponent{
+export class ChatThreadComponent {
 
   @Input() thread: Thread;
   @Input() selected: boolean;

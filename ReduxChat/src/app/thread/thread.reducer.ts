@@ -61,12 +61,11 @@ export const ThreadReducer =
       }
 
       case ThreadAction.SELECT_THREAD: {
-        const thread = (<ThreadAction.SelectThreadAction>action).thread;
+         const thread = (<ThreadAction.SelectThreadAction>action).thread;
         const oldThread = state.entities[thread.id];
 
         const newMessages = oldThread.messages.map(
-          (message) => Object.assign({},message,{isRead: true})
-        );
+          (message) => Object.assign({},message,{isRead: true}));
 
         const newThread = Object.assign({},oldThread, {
           messages: newMessages
@@ -88,17 +87,17 @@ export const ThreadReducer =
 
 export const getThreadState = (state): ThreadState => state.threads;
 
-export const getThreadsEntities = createSelector(
+export const getThreadEntities = createSelector(
   getThreadState,
   (state: ThreadState) => state.entities);
 
 export const getCurrentThread = createSelector(
-  getThreadsEntities,
+  getThreadEntities,
   getThreadState,
   (entities: ThreadEntities, state: ThreadState) => entities[state.currentThreadId]);
 
 export const getAllThreads = createSelector(
-  getThreadsEntities,
+  getThreadEntities,
   (entities: ThreadEntities) => Object.keys(entities).map(threadId => entities[threadId]));
 
 export const getUnreadMessageCount = createSelector(

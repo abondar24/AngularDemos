@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {Thread} from "../thread/thread.model";
 import * as ThreadActions from '../thread/thread.actions';
 import {User} from "../user/user.model";
@@ -14,10 +14,10 @@ import {getCurrentUser} from "../user/user.reducer";
   styleUrls: ['./chat-window.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatWindowComponent {
-   currentThread: Thread;
-   draftMessage: {text: string};
-   currentUser: User;
+export class ChatWindowComponent{
+  currentThread: Thread;
+  draftMessage: {text: string};
+  currentUser: User;
 
   constructor(@Inject(AppStore) private store: Redux.Store<AppState>,
               private el: ElementRef) {
